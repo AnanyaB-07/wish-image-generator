@@ -19,3 +19,6 @@ app.post('/generate', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
+app.get('/canvas', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'canvas.html'));
+});
