@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>Wish Image Generator</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Create a Wish Image</h1>
-  <form action="/generate" method="POST">
+  <form id="wishForm">
     <label>Recipient's Name:</label>
-    <input type="text" name="name" required /><br>
+    <input type="text" id="name" required /><br>
 
     <label>Occasion:</label>
-    <select name="occasion">
+    <select id="occasion">
       <option>Birthday</option>
       <option>Anniversary</option>
       <option>Festival</option>
@@ -20,16 +20,23 @@
     </select><br>
 
     <label>Message:</label>
-    <textarea name="message" required></textarea><br>
+    <textarea id="message" required></textarea><br>
 
     <label>Theme:</label>
-    <select name="theme">
-      <option>Floral</option>
-      <option>Minimal</option>
-      <option>Festive</option>
+    <select id="theme">
+      <option value="#ffe4e1">Floral</option>
+      <option value="#f0f8ff">Minimal</option>
+      <option value="#fffacd">Festive</option>
     </select><br>
 
     <button type="submit">Generate Image</button>
   </form>
+
+  <h2>Preview</h2>
+  <canvas id="wishCanvas" width="600" height="400"></canvas>
+  <br>
+  <button id="downloadBtn">Download Image</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
