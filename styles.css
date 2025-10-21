@@ -7,6 +7,7 @@ form {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 input, select, textarea {
   width: 100%;
@@ -15,4 +16,8 @@ input, select, textarea {
 }
 button {
   padding: 10px 20px;
+}
+canvas {
+  border: 1px solid #ccc;
+  margin-top: 10px;
 }
