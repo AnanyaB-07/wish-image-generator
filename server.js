@@ -1,24 +1,32 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+const form = document.getElementById('wishForm');
+const canvas = document.getElementById('wishCanvas');
+const ctx = canvas.getContext('2d');
+const downloadBtn = document.getElementById('downloadBtn');
 
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  const name = document.getElementById('name').value;
+  const occasion = document.getElementById('occasion').value;
+  const message = document.getElementById('message').value;
+  const theme = document.getElementById('theme').value;
+
+  // Draw background
+  ctx.fillStyle = theme;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw text
+  ctx.fillStyle = '#333';
+  ctx.font = '28px serif';
+  ctx.fillText(`${occasion} Wishes`, 50, 80);
+  ctx.font = '20px serif';
+  ctx.fillText(message, 50, 140);
+  ctx.fillText(`— ${name}`, 50, 180);
 });
 
-app.post('/generate', (req, res) => {
-  const { name, occasion, message, theme } = req.body;
-  const imageText = `${message}\n— ${name}`;
-  // For now, just send back the text. You can later integrate image generation.
-  res.send(`<h2>Your Wish Image</h2><div style="border:1px solid #ccc;padding:20px;">${imageText}</div><br><a href="/">Create Another</a>`);
-});
-
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
-});
-app.get('/canvas', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'canvas.html'));
+downloadBtn.addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = 'wish-image.png';
+  link.href = canvas.toDataURL();
+  link.click();
 });
