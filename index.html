@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wish Image Generator</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <h1>Create a Wish Image</h1>
+  <form action="/generate" method="POST">
+    <label>Recipient's Name:</label>
+    <input type="text" name="name" required /><br>
+
+    <label>Occasion:</label>
+    <select name="occasion">
+      <option>Birthday</option>
+      <option>Anniversary</option>
+      <option>Festival</option>
+      <option>Congratulations</option>
+    </select><br>
+
+    <label>Message:</label>
+    <textarea name="message" required></textarea><br>
+
+    <label>Theme:</label>
+    <select name="theme">
+      <option>Floral</option>
+      <option>Minimal</option>
+      <option>Festive</option>
+    </select><br>
+
+    <button type="submit">Generate Image</button>
+  </form>
+</body>
+</html>
